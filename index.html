@@ -6,7 +6,6 @@
     <title>Cangrejito | Uñas & Estilo</title>
 
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💅</text></svg>">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -26,7 +25,6 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            /* Desactiva el destello azul al tocar elementos en móviles */
             -webkit-tap-highlight-color: transparent;
         }
 
@@ -149,7 +147,7 @@
             justify-content: center;
             gap: 12px;
             width: 100%;
-            padding: 16px 20px; /* Área de toque óptima en móviles */
+            padding: 16px 20px;
             background-color: var(--card-bg);
             color: var(--text-color);
             text-decoration: none;
@@ -161,19 +159,23 @@
             user-select: none;
         }
 
-        .link-btn:hover {
+        .link-btn:hover:not(.disabled) {
             transform: translateY(-2px);
             box-shadow: var(--shadow-md);
         }
 
-        .link-btn:active {
+        .link-btn:active:not(.disabled) {
             transform: scale(0.98);
         }
 
-        .link-btn.whatsapp {
-            background-color: #25D366;
-            color: #ffffff;
-            border: none;
+        /* Estilos para el botón desactivado */
+        .link-btn.whatsapp.disabled {
+            background-color: #e0e0e0;
+            color: #888888;
+            border: 1px solid #d0d0d0;
+            cursor: not-allowed;
+            opacity: 0.75;
+            box-shadow: none;
         }
 
         /* Precios / Catálogo */
@@ -248,7 +250,7 @@
             color: #aaa;
         }
 
-        /* Ajuste para pantallas muy pequeñas (Mobile First Extra) */
+        /* Responsive Breakpoints */
         @media (max-width: 360px) {
             .gallery-grid {
                 grid-template-columns: 1fr;
@@ -259,7 +261,6 @@
             }
         }
 
-        /* Pantallas Medianas (Tablets/Laptops) */
         @media (min-width: 600px) {
             .catalog-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -271,7 +272,6 @@
             }
         }
 
-        /* Pantallas Grandes (Escritorio) */
         @media (min-width: 900px) {
             .profile-img {
                 width: 130px;
@@ -311,8 +311,9 @@
 
         <section id="redes" class="tab-content active" role="tabpanel" aria-labelledby="tab-redes">
             <div class="links-wrapper">
-                <a href="https://wa.me" target="_blank" rel="noopener noreferrer" class="link-btn whatsapp">
-                    <i class="fa-brands fa-whatsapp fa-lg" aria-hidden="true"></i> WhatsApp
+                <!-- Botón de WhatsApp desactivado -->
+                <a role="button" aria-disabled="true" class="link-btn whatsapp disabled">
+                    <i class="fa-brands fa-whatsapp fa-lg" aria-hidden="true"></i> Próximamente citas por WhatsApp
                 </a>
                 <a href="https://www.instagram.com/cangrejito_nails?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" class="link-btn">
                     <i class="fa-brands fa-instagram fa-lg" style="color: #E1306C;" aria-hidden="true"></i> Instagram
@@ -338,7 +339,7 @@
                         <h3>Uñas de tip</h3>
                         <p>Uñas realizadas con extensión de tip sobre la uña natural</p>
                     </div>
-                    <div class="price">Precio</div>
+                    <div class="price">Consultar</div>
                 </article>
 
                 <article class="catalog-item">
@@ -346,7 +347,7 @@
                         <h3>Esmaltado Semipermanente</h3>
                         <p>También conocido como Gelish sobre la uña natural</p>
                     </div>
-                    <div class="price">Precio</div>
+                    <div class="price">Consultar</div>
                 </article>
 
                 <article class="catalog-item">
@@ -363,10 +364,10 @@
             <div class="gallery-grid">
                 <div class="gallery-item"><img src="Assets/uñas1.jpeg" alt="Diseño de uñas 1" loading="lazy" decoding="async"></div>
                 <div class="gallery-item"><img src="Assets/uñas2.jpeg" alt="Diseño de uñas 2" loading="lazy" decoding="async"></div>
-                <div class="gallery-item"><img src="Assets/uñas3.jpeg" alt="Diseño de uñas 3" loading="lazy" decoding="async"></div>
+                <div class="gallery-item"><img src="Assets/uñas 3.jpg" alt="Diseño de uñas 3" loading="lazy" decoding="async"></div>
                 <div class="gallery-item"><img src="Assets/uñas4.jpeg" alt="Diseño de uñas 4" loading="lazy" decoding="async"></div>
-                <div class="gallery-item"><img src="img/trabajo5.jpg" alt="Diseño de uñas 5" loading="lazy" decoding="async"></div>
-                <div class="gallery-item"><img src="img/trabajo6.jpg" alt="Diseño de uñas 6" loading="lazy" decoding="async"></div>
+                <div class="gallery-item"><img src="Assets/trabajo5.jpg" alt="Diseño de uñas 5" loading="lazy" decoding="async"></div>
+                <div class="gallery-item"><img src="Assets/trabajo6.jpg" alt="Diseño de uñas 6" loading="lazy" decoding="async"></div>
             </div>
         </section>
 
