@@ -1,402 +1,440 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cangrejito | Uñas & Estilo</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cangrejito Rewards | Tarjeta de Lealtad</title>
+  <style>
+    :root {
+      --primary: #e8b4b8;
+      --primary-dark: #d89fb4;
+      --accent: #fff0f2;
+      --bg: #faf6f0;
+      --card-bg: #ffffff;
+      --text: #4a4a4a;
+    }
 
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💅</text></svg>">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 
-    <style>
-        :root {
-            --primary-color: #d4a373;
-            --bg-color: #faf6f0;
-            --card-bg: #ffffff;
-            --text-color: #4a4a4a;
-            --accent-pink: #e8b4b8;
-            --accent-pink-hover: #d89fb4;
-            --border-color: #f2f2f2;
-            --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.03);
-            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
-        }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
 
-        *, *::before, *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            -webkit-tap-highlight-color: transparent;
-        }
+    .container {
+      width: 100%;
+      max-width: 380px;
+      background: var(--card-bg);
+      border-radius: 24px;
+      box-shadow: 0 10px 25px rgba(232, 180, 184, 0.2);
+      padding: 24px;
+      text-align: center;
+      border: 1px solid var(--accent);
+    }
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-            display: flex;
-            justify-content: center;
-            padding: 20px 16px 40px;
-            min-height: 100vh;
-        }
+    .brand-header h1 {
+      font-size: 1.5rem;
+      color: #2c2c2c;
+      letter-spacing: 1px;
+    }
 
-        .container {
-            width: 100%;
-            max-width: 900px;
-            margin: 0 auto;
-            text-align: center;
-        }
+    .client-name-box {
+      margin: 10px 0 18px 0;
+    }
 
-        .profile {
-            margin-bottom: 32px;
-        }
+    .client-name-box h2 {
+      font-size: 1.2rem;
+      color: #333;
+      font-weight: 600;
+    }
 
-        .profile-img {
-            width: 110px;
-            height: 110px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid var(--accent-pink);
-            box-shadow: var(--shadow-md);
-            background-color: #eee;
-            flex-shrink: 0;
-        }
+    .client-name-box p {
+      font-size: 0.8rem;
+      color: #888;
+    }
 
-        .profile h1 {
-            font-size: 1.6rem;
-            margin-top: 16px;
-            color: #2c2c2c;
-            font-weight: 700;
-            font-family: 'Times New Roman', serif;
-        }
+    .card-reward {
+      background: var(--accent);
+      padding: 12px;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--primary-dark);
+      margin-bottom: 24px;
+    }
 
-        .profile p {
-            font-size: 0.95rem;
-            color: #666;
-            margin-top: 4px;
-        }
+    .stamps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 24px;
+      justify-items: center; /* Centra cada contenedor en su casilla */
+      align-items: center;
+      width: 100%;
+    }
 
-        /* Nav & Tabs */
-        .tabs {
-            display: flex;
-            justify-content: center;
-            background: var(--card-bg);
-            border-radius: 30px;
-            padding: 5px;
-            margin: 0 auto 24px;
-            max-width: 500px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
-        }
+    .stamp {
+      width: 100%;          /* Mantiene la simetría exacta en las 3 columnas */
+      aspect-ratio: 1;
+      border: 2px dashed var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      transition: all 0.3s ease;
+      overflow: visible;     /* Permite posicionar el número sin recortes */
+      padding: 0;
+      background-color: #ffffff;
+    }
 
-        .tab-btn {
-            flex: 1;
-            padding: 12px 14px;
-            border: none;
-            background: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            color: #777;
-            cursor: pointer;
-            border-radius: 25px;
-            transition: all 0.2s ease;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            user-select: none;
-        }
+    .stamp img {
+      width: 105%;
+      height: 105%;
+      object-fit: contain;
+      display: block;
+      margin: auto;
+      transition: transform 0.3s ease;
+      transform: translate(0px, -7px);
+    }
 
-        .tab-btn.active {
-            background-color: var(--accent-pink);
-            color: #ffffff;
-            box-shadow: 0 2px 8px rgba(232, 180, 184, 0.4);
-        }
+    .stamp.active {
+      background-color: var(--accent);
+      border: 2px solid var(--primary-dark);
+    }
 
-        .tab-btn:hover:not(.active) {
-            color: var(--accent-pink-hover);
-        }
+    .stamp.empty {
+      opacity: 0.75;
+    }
 
-        .tab-btn:active {
-            transform: scale(0.97);
-        }
+    .stamp-number {
+      position: absolute;
+      bottom: -4px;
+      right: -4px;
+      font-size: 0.75rem;
+      font-weight: bold;
+      color: var(--primary-dark);
+      background: #ffffff;
+      border: 1px solid var(--primary);
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      z-index: 2;
+    }
 
-        .tab-content {
-            display: none;
-            animation: fadeIn 0.35s ease;
-        }
+    .notification {
+      display: none;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: bold;
+    }
 
-        .tab-content.active {
-            display: block;
-        }
+    .notification.success {
+      display: block;
+      background-color: #d4edda;
+      color: #155724;
+    }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(6px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+    .notification.error {
+      display: block;
+      background-color: #f8d7da;
+      color: #721c24;
+    }
 
-        /* Botones de Redes */
-        .links-wrapper {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            max-width: 500px;
-            margin: 0 auto;
-        }
+    .register-box {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 15px;
+    }
 
-        .link-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            width: 100%;
-            padding: 16px 20px;
-            background-color: var(--card-bg);
-            color: var(--text-color);
-            text-decoration: none;
-            font-weight: 600;
-            border-radius: 16px;
-            border: 1px solid var(--border-color);
-            box-shadow: var(--shadow-sm);
-            transition: transform 0.2s, box-shadow 0.2s;
-            user-select: none;
-        }
+    .register-box input {
+      padding: 12px;
+      border: 1px solid var(--primary);
+      border-radius: 10px;
+      font-size: 0.95rem;
+      text-align: center;
+      outline: none;
+    }
 
-        .link-btn:hover:not(.disabled) {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
-        }
+    .btn {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
 
-        .link-btn:active:not(.disabled) {
-            transform: scale(0.98);
-        }
+    .actions-footer {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 15px;
+      padding-top: 10px;
+      border-top: 1px dashed #eee;
+    }
 
-        /* Estilos para el botón desactivado */
-        .link-btn.whatsapp.disabled {
-            background-color: #e0e0e0;
-            color: #888888;
-            border: 1px solid #d0d0d0;
-            cursor: not-allowed;
-            opacity: 0.75;
-            box-shadow: none;
-        }
+    .btn-link {
+      background: transparent;
+      border: none;
+      color: #aaa;
+      font-size: 0.75rem;
+      cursor: pointer;
+      text-decoration: underline;
+    }
 
-        /* Precios / Catálogo */
-        .catalog-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 14px;
-        }
-
-        .catalog-item {
-            background: var(--card-bg);
-            padding: 18px;
-            border-radius: 16px;
-            text-align: left;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--border-color);
-        }
-
-        .catalog-info h3 {
-            font-size: 1rem;
-            color: #333;
-            font-weight: 600;
-        }
-
-        .catalog-info p {
-            font-size: 0.85rem;
-            color: #777;
-            margin-top: 4px;
-            line-height: 1.3;
-        }
-
-        .price {
-            font-weight: 700;
-            color: var(--primary-color);
-            font-size: 1.1rem;
-            padding-left: 12px;
-            white-space: nowrap;
-        }
-
-        /* Galería */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-        }
-
-        .gallery-item {
-            background-color: var(--card-bg);
-            border-radius: 14px;
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-        }
-
-        .gallery-item img {
-            width: 100%;
-            aspect-ratio: 1 / 1;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.3s ease;
-        }
-
-        .gallery-item img:hover {
-            transform: scale(1.03);
-        }
-
-        .footer-note {
-            margin-top: 40px;
-            font-size: 0.8rem;
-            color: #aaa;
-        }
-
-        /* Responsive Breakpoints */
-        @media (max-width: 360px) {
-            .gallery-grid {
-                grid-template-columns: 1fr;
-            }
-            .tab-btn {
-                font-size: 0.82rem;
-                padding: 10px 8px;
-            }
-        }
-
-        @media (min-width: 600px) {
-            .catalog-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .gallery-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 16px;
-            }
-        }
-
-        @media (min-width: 900px) {
-            .profile-img {
-                width: 130px;
-                height: 130px;
-            }
-
-            .profile h1 {
-                font-size: 1.8rem;
-            }
-
-            .gallery-grid {
-                gap: 20px;
-            }
-        }
-    </style>
+    .btn-link.danger {
+      color: #e74c3c;
+    }
+  </style>
 </head>
 <body>
 
-    <main class="container">
-        <header class="profile">
-            <img src="Assets/assets_1.jpg" alt="Logo Cangrejito" class="profile-img" width="110" height="110" decoding="async">
-            <h1>Cangrejito Nails</h1>
-            <p>Terapia en forma de manicura 💕</p>
-        </header>
+  <div class="container">
+    <div class="brand-header">
+      <h1>CANGREJITO REWARDS</h1>
+    </div>
 
-        <nav class="tabs" role="tablist" aria-label="Secciones principales">
-            <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="redes" id="tab-redes" onclick="switchTab(this, 'redes')">
-                <i class="fa-solid fa-link" aria-hidden="true"></i> Redes
-            </button>
-            <button class="tab-btn" role="tab" aria-selected="false" aria-controls="catalogo" id="tab-catalogo" onclick="switchTab(this, 'catalogo')">
-                <i class="fa-solid fa-list" aria-hidden="true"></i> Precios
-            </button>
-            <button class="tab-btn" role="tab" aria-selected="false" aria-controls="galeria" id="tab-galeria" onclick="switchTab(this, 'galeria')">
-                <i class="fa-solid fa-camera" aria-hidden="true"></i> Galería
-            </button>
-        </nav>
+    <!-- PANTALLA DE REGISTRO -->
+    <div id="registration-screen" style="display: none;">
+      <div class="client-name-box">
+        <p>¡Bienvenida/o! Ingresa tu nombre para activar tu tarjeta de cliente frecuente.</p>
+      </div>
+      <div class="register-box">
+        <input type="text" id="input-name" placeholder="Tu Nombre y Apellido" maxlength="30">
+        <button class="btn" onclick="registerUser()">Guardar mi Tarjeta</button>
+      </div>
+    </div>
 
-        <section id="redes" class="tab-content active" role="tabpanel" aria-labelledby="tab-redes">
-            <div class="links-wrapper">
-                <!-- Botón de WhatsApp desactivado -->
-                <a role="button" aria-disabled="true" class="link-btn whatsapp disabled">
-                    <i class="fa-brands fa-whatsapp fa-lg" aria-hidden="true"></i> Próximamente citas por WhatsApp
-                </a>
-                <a href="https://www.instagram.com/cangrejito_nails?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" class="link-btn">
-                    <i class="fa-brands fa-instagram fa-lg" style="color: #E1306C;" aria-hidden="true"></i> Instagram
-                </a>
-                <a href="https://www.tiktok.com/@cangrejito_nails?_r=1&_t=ZS-98g1a3L6rSs" target="_blank" rel="noopener noreferrer" class="link-btn">
-                    <i class="fa-brands fa-tiktok fa-lg" style="color: #000000;" aria-hidden="true"></i> TikTok
-                </a>
-            </div>
-        </section>
+    <!-- PANTALLA DE TARJETA PRINCIPAL -->
+    <div id="card-screen" style="display: none;">
+      <div class="client-name-box">
+        <h2 id="client-name">Hola</h2>
+        <p id="client-cycle-text">Tarjeta del Cliente Frecuente</p>
+      </div>
 
-        <section id="catalogo" class="tab-content" role="tabpanel" aria-labelledby="tab-catalogo" hidden>
-            <div class="catalog-grid">
-                <article class="catalog-item">
-                    <div class="catalog-info">
-                        <h3>Uñas Esculturales</h3>
-                        <p>Uñas acrílicas creadas desde cero sobre la uña natural</p>
-                    </div>
-                    <div class="price">Desde $250</div>
-                </article>
+      <div id="alert-box" class="notification"></div>
 
-                <article class="catalog-item">
-                    <div class="catalog-info">
-                        <h3>Uñas de tip</h3>
-                        <p>Uñas realizadas con extensión de tip sobre la uña natural</p>
-                    </div>
-                    <div class="price">Desde $220</div>
-                </article>
+      <div class="card-reward" id="reward-status">
+        ¡Llena tu tarjeta y obtén tu premio!
+      </div>
 
-                <article class="catalog-item">
-                    <div class="catalog-info">
-                        <h3>Esmaltado Semipermanente</h3>
-                        <p>También conocido como Gelish sobre la uña natural</p>
-                    </div>
-                    <div class="price">Desde $180</div>
-                </article>
+      <div class="stamps-grid" id="stamps-container"></div>
 
-                <article class="catalog-item">
-                    <div class="catalog-info">
-                        <h3>Retiros</h3>
-                        <p>Retiro de uñas acrilicas y gel semipermanente</p>
-                    </div>
-                    <div class="price">Desde $100</div>
-                </article>
-            </div>
-        </section>
+      <!-- BOTONES DE EDICIÓN Y REINICIO -->
+      <div class="actions-footer">
+        <button class="btn-link" onclick="editName()">Editar nombre</button>
+        <button class="btn-link danger" onclick="resetCard()">Reiniciar tarjeta</button>
+      </div>
+    </div>
+  </div>
 
-        <section id="galeria" class="tab-content" role="tabpanel" aria-labelledby="tab-galeria" hidden>
-            <div class="gallery-grid">
-                <div class="gallery-item"><img src="Assets/uñas1.jpeg" alt="Diseño de uñas 1" loading="lazy" decoding="async"></div>
-                <div class="gallery-item"><img src="Assets/uñas2.jpeg" alt="Diseño de uñas 2" loading="lazy" decoding="async"></div>
-                <div class="gallery-item"><img src="Assets/uñas3.jpeg" alt="Diseño de uñas 3" loading="lazy" decoding="async"></div>
-                <div class="gallery-item"><img src="Assets/uñas4.jpeg" alt="Diseño de uñas 4" loading="lazy" decoding="async"></div>
-                <div class="gallery-item"><img src="Assets/uñas5.jpeg" alt="Diseño de uñas 5" loading="lazy" decoding="async"></div>
-                <div class="gallery-item"><img src="Assets/uñas6.jpeg" alt="Diseño de uñas 6" loading="lazy" decoding="async"></div>
-                <div class="gallery-item"><img src="Assets/uñas7.jpeg" alt="Diseño de uñas 7" loading="lazy" decoding="async"></div>
-                <div class="gallery-item"><img src="Assets/uñas8.jpeg" alt="Diseño de uñas 8" loading="lazy" decoding="async"></div>
+  <script>
+    const TOTAL_STAMPS = 6;
+    const SECRET_KEY = "NAILS2026";
+    const MIN_STAMP_INTERVAL_MS = 2 * 60 * 60 * 1000;
 
-            </div>
-        </section>
+    // --- RUTAS / URLS DE TUS DIBUJOS ---
+    const EMPTY_CRAB_URL = "Assets/Uncolor.png"; 
+    const ACTIVE_CRAB_URL = "Assets/color.png"; 
 
-        <footer class="footer-note">
-            <p>@Cangrejito_Nails — Dedicación, amor y compromiso 💅</p>
-        </footer>
-    </main>
+    // URL DE GOOGLE APPS SCRIPT
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwivCiZnPLXRTfmc1jWba_zyjR3hhCDSnxgghj8a27gpheh6bSJYBVVAyTaDhHsRCgl/exec";
 
-    <script>
-        function switchTab(selectedBtn, tabId) {
-            document.querySelectorAll('.tab-btn').forEach(btn => {
-                const isActive = btn === selectedBtn;
-                btn.classList.toggle('active', isActive);
-                btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
-            });
+    let clientName = localStorage.getItem('cangrejito_client_name');
+    let currentStamps = parseInt(localStorage.getItem('cangrejito_stamps')) || 0;
+    let cardCycle = parseInt(localStorage.getItem('cangrejito_cycle')) || 1;
+    let lastStampTime = parseInt(localStorage.getItem('cangrejito_last_stamp_time')) || 0;
 
-            document.querySelectorAll('.tab-content').forEach(panel => {
-                const isActive = panel.id === tabId;
-                panel.classList.toggle('active', isActive);
-                if (isActive) {
-                    panel.removeAttribute('hidden');
-                } else {
-                    panel.setAttribute('hidden', '');
-                }
-            });
+    function initApp() {
+      if (!clientName) {
+        document.getElementById('registration-screen').style.display = 'block';
+        document.getElementById('card-screen').style.display = 'none';
+      } else {
+        document.getElementById('registration-screen').style.display = 'none';
+        document.getElementById('card-screen').style.display = 'block';
+        document.getElementById('client-name').textContent = clientName;
+        
+        if (cardCycle > 1) {
+          document.getElementById('client-cycle-text').textContent = `Tarjeta Cliente Frecuente (Nivel ${cardCycle})`;
+        } else {
+          document.getElementById('client-cycle-text').textContent = `Tarjeta del Cliente Frecuente`;
         }
-    </script>
+
+        checkQRValidation();
+        renderStamps();
+      }
+    }
+
+    function registerUser() {
+      const nameInput = document.getElementById('input-name').value.trim();
+      if (nameInput === '') {
+        alert('Por favor ingresa tu nombre');
+        return;
+      }
+      clientName = nameInput;
+      currentStamps = 0;
+      cardCycle = 1;
+      lastStampTime = 0;
+
+      localStorage.setItem('cangrejito_client_name', clientName);
+      localStorage.setItem('cangrejito_stamps', 0);
+      localStorage.setItem('cangrejito_cycle', 1);
+      localStorage.setItem('cangrejito_last_stamp_time', 0);
+      
+      sendToGoogleSheets('Nuevo Registro', 0);
+      initApp();
+    }
+
+    function checkQRValidation() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const scannedSecret = urlParams.get('secret');
+
+      if (scannedSecret === SECRET_KEY) {
+        const now = Date.now();
+        
+        if (now - lastStampTime < MIN_STAMP_INTERVAL_MS) {
+          showAlert('⚠️ Ya se registró un sello recientemente. Intenta más tarde.', 'error');
+        } else if (currentStamps < TOTAL_STAMPS) {
+          currentStamps++;
+          lastStampTime = now;
+
+          localStorage.setItem('cangrejito_stamps', currentStamps);
+          localStorage.setItem('cangrejito_last_stamp_time', lastStampTime);
+
+          showAlert('✨ ¡Sello añadido con éxito!', 'success');
+          sendToGoogleSheets('Sello Añadido', currentStamps);
+        } else {
+          showAlert('🎉 ¡Ya completaste tus sellos! Muestra tu tarjeta para recibir tu premio.', 'success');
+        }
+
+        window.history.replaceState({}, document.title, window.location.pathname);
+      }
+    }
+
+    function sendToGoogleSheets(actionType, stampsCount) {
+      if (!GOOGLE_SCRIPT_URL) return;
+
+      fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'text/plain;charset=utf-8',
+        },
+        body: JSON.stringify({
+          clientName: clientName,
+          action: actionType,
+          stamps: stampsCount,
+          cycle: cardCycle
+        })
+      }).catch(err => console.log('Error enviando datos:', err));
+    }
+
+    function showAlert(message, type = 'success') {
+      const alertBox = document.getElementById('alert-box');
+      alertBox.textContent = message;
+      alertBox.className = `notification ${type}`;
+      setTimeout(() => {
+        alertBox.className = 'notification';
+      }, 5000);
+    }
+
+    function renderStamps() {
+      const container = document.getElementById('stamps-container');
+      const rewardStatus = document.getElementById('reward-status');
+      container.innerHTML = '';
+
+      for (let i = 1; i <= TOTAL_STAMPS; i++) {
+        const stamp = document.createElement('div');
+        stamp.classList.add('stamp');
+        
+        const img = document.createElement('img');
+        const badgeNumber = document.createElement('span');
+        badgeNumber.classList.add('stamp-number');
+        badgeNumber.textContent = i;
+
+        if (i <= currentStamps) {
+          stamp.classList.add('active');
+          img.src = ACTIVE_CRAB_URL;
+          img.alt = "Cangrejito Coloreado";
+        } else {
+          stamp.classList.add('empty');
+          img.src = EMPTY_CRAB_URL;
+          img.alt = "Cangrejito Sin Color";
+        }
+
+        stamp.appendChild(img);
+        stamp.appendChild(badgeNumber);
+        container.appendChild(stamp);
+      }
+
+      if (currentStamps >= TOTAL_STAMPS) {
+        rewardStatus.textContent = '🎉 ¡Felicidades! Tienes tu premio listo para canjear.';
+        rewardStatus.style.background = '#d4edda';
+        rewardStatus.style.color = '#155724';
+      } else {
+        rewardStatus.textContent = `Te faltan ${TOTAL_STAMPS - currentStamps} visita(s) para tu premio.`;
+        rewardStatus.style.background = 'var(--accent)';
+        rewardStatus.style.color = 'var(--primary-dark)';
+      }
+    }
+
+    function editName() {
+      const newName = prompt('Ingresa tu nombre actualizado:', clientName);
+      if (newName && newName.trim() !== '') {
+        clientName = newName.trim();
+        localStorage.setItem('cangrejito_client_name', clientName);
+        document.getElementById('client-name').textContent = clientName;
+        sendToGoogleSheets('Nombre Actualizado', currentStamps);
+      }
+    }
+
+    function resetCard() {
+      const isCompleted = currentStamps >= TOTAL_STAMPS;
+      let confirmMsg = "¿Estás segura/o de reiniciar la tarjeta?";
+      
+      if (isCompleted) {
+        confirmMsg = "🎉 ¡Premio entregado! ¿Deseas reiniciar la tarjeta para iniciar un nuevo ciclo?";
+      }
+
+      if (confirm(confirmMsg)) {
+        if (isCompleted) {
+          cardCycle++;
+          sendToGoogleSheets('Tarjeta Reiniciada (Premio Entregado)', 0);
+        } else {
+          sendToGoogleSheets('Tarjeta Reiniciada Manualmente', 0);
+        }
+
+        currentStamps = 0;
+        lastStampTime = 0;
+
+        localStorage.setItem('cangrejito_stamps', 0);
+        localStorage.setItem('cangrejito_cycle', cardCycle);
+        localStorage.setItem('cangrejito_last_stamp_time', 0);
+
+        initApp();
+      }
+    }
+
+    initApp();
+  </script>
 </body>
 </html>
